@@ -3,18 +3,18 @@
 @section('title','Add employee')
 
 @section('content')
+<!-- <h6 class="h3 mb-0 text-dark">Employee List</h6> -->
 <div class="card shadow mb-1">
+    
     <div class="card-header py-3">
-        <!-- <h6 class="m-0 font-weight-bold text-info">Student List</h6> -->
-<!--         
-        <h6 class="m-0 font-weight-bold text-info"><a class="m-0 font-weight-bold text-info" style="text-decoration:none" href="/employees/create">Add Employee</a></h6>  -->
         <div class="d-sm-flex align-items-center justify-content-between ">
             <h6 class="h3 mb-0 text-dark">Employee List</h6>
             <h6 class="m-0 font-weight-bold text-info"><a class="m-0 font-weight-bold text-info" style="text-decoration:none" href="/employees/create">Add Employee</a></h6>
+            
         </div>
+        
             </div>
                 <div class="card-body">
-                    <div class="table-responsive">
                         <table class="table table-bordered text-4xl" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="text-light "  style="background: cadetblue;"> 
@@ -60,7 +60,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            <!-- </div> -->
                         </div>
             </div>
 @endsection
@@ -91,5 +91,15 @@
     </div>
 </div>
 
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('#dataTable').DataTable();
+});
+</script>
+
+
+
+@endsection
 
 

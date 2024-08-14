@@ -50,6 +50,7 @@
                 <div class="col-sm-6">
                     <label>Department</label>
                     <select class="form-control" name="department" >
+                        <option value="">Select Department</option>
                         <option value="coordinator" {{old('department')=='csd'?'selected':''}}>Coordinator</option>
                         <option value="engineering" {{old('department')=='csd'?'selected':''}}>Engineering</option>
                         <option value="administration" {{old('department')=='csd'?'selected':''}}>Administration</option>

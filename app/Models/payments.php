@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\employees;
 class payments extends Model
 {
-    use HasFactory,SoftDeletes;
+    protected $table = 'payments';
+    protected $primaryKey = 'id';
 
     protected $fillable =[
         'voucher_id',
@@ -18,5 +19,11 @@ class payments extends Model
         'payment_amount',
         'purpose_of_payment',
     ];
+    use HasFactory;
+    public function employees()
+    {
+        return $this->belongsTo(employees::class);
+    }
+
 }
 

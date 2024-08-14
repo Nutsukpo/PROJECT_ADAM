@@ -13,26 +13,26 @@
             <hr>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Select Staff</label>
-                    <select>
-                        <option>
-                        <input type="text" class="form-control  @error('department_for') is-invalid @enderror" 
-                    placeholder="Enter department for" name="department_for" required 
-                    value="{{old('department_for')}}">
-                    @error('department_for')
+                    <label>Name Of Employee</label>  
+                    <select type="text" class="form-control  @error('name_of_employee') is-invalid @enderror" 
+                    placeholder="Enter name of employee" name="name_of_employee"  id="employee_id" required >
+                        <option value="">Select Staff</option>
+                        @foreach($employees as $employee)
+                            <option value="{{ $employee->firstname }} {{ $employee->lastname }}">{{ $employee->firstname }} {{ $employee->lastname }}</option>
+                        @endforeach
+                    </select>
+                    @error('employee_id')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
                     @enderror
-                        </option>
-                    </select>
                 </div>
                 <div class="col-sm-6">
                     <label>attendance Date</label>
-                    <input type="date" class="form-control  @error('asset_name') is-invalid @enderror"
-                    placeholder="Enter Last Name" name="asset_name" required 
-                    value="{{old('asset_name')}}">
-                    @error('asset_name')
+                    <input type="date" class="form-control  @error('attendance_date') is-invalid @enderror"
+                    placeholder="Enter Last Name" name="attendance_date" required 
+                    value="{{old('attendance_date')}}">
+                    @error('attendance_date')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -40,23 +40,20 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Department_For</label>
-                    <input type="text" class="form-control  @error('department_for') is-invalid @enderror" 
-                    placeholder="Enter department for" name="department_for" required 
-                    value="{{old('department_for')}}">
-                    @error('department_for')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                    @enderror
+                <div class="col-sm-6">
+                    <label>Clock-In</label>
+                    <select class="form-control" name="clock_in" >
+                        <option value="">Select Status</option>
+                        <option value="present" {{old('present')=='csd'?'selected':''}}>Present</option>
+                        <option value="absent" {{old('absent')=='csd'?'selected':''}}>Absent</option>
+                    </select>       
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Clock-In</label>
-                    <input type="assets_type" class="form-control  @error('asset_type') is-invalid @enderror" 
-                    placeholder="Enter Asset Type" name="asset_type" required 
-                    value="{{old('asset_type')}}">
-                    @error('asset_type')
+                    <label>Time</label>
+                    <input type="time" class="form-control  @error('time') is-invalid @enderror" 
+                     name="time" required 
+                    value="{{old('time')}}">
+                    @error('time')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -64,7 +61,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-user text-light btn-block" style="background-color: cadetblue;">
-                Save
+                Clock-In
             </button>
             <hr>
         </form>

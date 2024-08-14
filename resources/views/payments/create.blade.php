@@ -37,11 +37,15 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Name Of Employee</label>
-                    <input type="text" class="form-control  @error('name_of_employee') is-invalid @enderror" 
-                    placeholder="Enter name of employee" name="name_of_employee" required 
-                    value="{{old('name_of_employee')}}">
-                    @error('name_of_employee')
+                    <label>Name Of Employee</label>  
+                    <select type="text" class="form-control  @error('name_of_employee') is-invalid @enderror" 
+                    placeholder="Enter name of employee" name="name_of_employee"  id="employee_id" required >
+                        <option value="">select employee</option>
+                        @foreach($employees as $employee)
+                            <option value="{{ $employee->firstname }} {{ $employee->lastname }}">{{ $employee->firstname }} {{ $employee->lastname }}</option>
+                        @endforeach
+                    </select>
+                    @error('employee_id')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -49,7 +53,7 @@
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Month Of Payment</label>
-                    <input type="text" class="form-control  @error('month_of_payment') is-invalid @enderror" 
+                    <input type="month" class="form-control  @error('month_of_payment') is-invalid @enderror" 
                     placeholder="Enter month of payment" name="month_of_payment" required 
                     value="{{old('month_of_payment')}}">
                     @error('month_of_payment')
@@ -91,3 +95,6 @@
     </div>
 </div>  
 @endsection
+
+
+

@@ -9,7 +9,8 @@
         <h6 class="m-0 font-weight-bold text-info"><a class="m-0 font-weight-bold text-info" style="text-decoration: none;" href="/assets/create">Add Asset</a></h6>
     </div>
                 <div class="card-body">
-                    <div class="table-responsive">
+            
+                    <!-- <div class="table-responsive"> -->
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="mb-3 "  style="background: cadetblue;"> 
@@ -52,7 +53,7 @@
                                     @endforeach
                                     </tbody>
                         </table>
-                            </div>
+                            <!-- </div> -->
                     </div>
             </div>
 @endsection
@@ -82,5 +83,14 @@
     </div>
 </div>
 
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('#dataTable').DataTable();
+});
+</script>
 
+
+
+@endsection
 

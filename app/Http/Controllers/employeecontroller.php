@@ -37,7 +37,7 @@ class employeecontroller extends Controller
             'firstname' =>'required |min:2',
             'lastname' =>'required |min:2',
             'email' =>'required |email |unique:employees,email',
-            'employee_id' =>'required ',
+            'employee_id' =>'required |unique:employees,employee_id',
             'department'=>'required ',
             'contact' =>'required | min:10 | max:13 |unique:employees,contact',
             'address' =>'required',
@@ -121,10 +121,5 @@ class employeecontroller extends Controller
         // return the edit.blade.php which is in the employee folder and pass the data to it
         return view('employees.watch',['employee'=>$employee]);
     }
-    public function showEmployeeDropdown()
-    {
-        $employee = employees::all();
-        return view('employees.dropdown', compact('employees'));
-    }
-
+    
 }

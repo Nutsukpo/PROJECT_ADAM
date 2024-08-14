@@ -86,9 +86,7 @@
                 <div id="collapseEight" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/attendance">Lists</a>
-                        <a class="collapse-item" href="/attendance/create">Clock-In </a>
-                        <a class="collapse-item" href="/attendance/">clock-Out </a>
-
+                        <a class="collapse-item" href="/attendance/create">Attendance </a>
                     </div>
                 </div>
             </li> 
@@ -102,7 +100,7 @@
                 <div id="collapseSeven" class="collapse bg-dark aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/payments">Lists</a>
-                        <a class="collapse-item" href="/payments/create">Pay Saff </a>
+                        <a class="collapse-item" href="/payments/create">Pay Saff</a>
                     </div>
                 </div>
             </li> 
@@ -287,6 +285,13 @@
         @endif
 
     @yield('scripts')
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
 
 </body>
 

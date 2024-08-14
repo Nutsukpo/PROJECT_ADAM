@@ -19,7 +19,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-white text-uppercase display-2 mb-1">
-                            Employees</div>
+                            Staff</div>
                         <div class="h5 mb-0 font-weight-bold text-white">{{ $employeesCount }}</div>
                     </div>
                     <div class="col-auto">
@@ -37,7 +37,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-light text-uppercase display-2 mb-1">
                             Attendance</div>
-                        <div class="h5 mb-0 font-weight-bold text-light">102</div>
+                        <div class="h5 mb-0 font-weight-bold text-light">{{ $attendanceCount }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-bell fa-2x text-white"></i>
@@ -218,12 +218,8 @@
     </div>
 </div>
 </div>
-
-
-
-
-
 @endsection
+
 
 
 @section('scripts')
@@ -233,5 +229,5 @@
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
 <script src="js/demo/chart-pie-demo.js"></script>
-
 @endsection
+

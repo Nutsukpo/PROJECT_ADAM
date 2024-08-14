@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\payments;
+use App\Models\employees;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,21 +18,28 @@ class paymentcontroller extends Controller
 
         return view('posts.show', ['post' => $post]);
     }
+
+
+
     
     //func to return payments list view
     public function index(){
         // fetch all payments fromm the db
         $payments= payments::all();
+        // dd($payments);
         // return the view data
         return view('payments.index',['payments'=>$payments]);
     }
     //func to return the form to add a new payment to the list
     public function create(){
-        return view('payments.create');
+        $employees = employees::select('firstname','lastname','employee_id')->get();
+        // dd($employees);
+        return view('payments.create',['employees'=>$employees]);
     }
     // func to store data in the database
     public function store(Request $request){
         $data = $request->all();
+        // dd($data);
         $Validator = Validator::make($data,[
             'voucher_id' =>'required ',
             'payment_date' =>'required',
@@ -114,6 +122,8 @@ class paymentcontroller extends Controller
         $payment = payments::all();
         return view('payments.dropdown', compact('payments'));
     }
+
+    
 
     
 

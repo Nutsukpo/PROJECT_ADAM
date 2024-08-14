@@ -10,12 +10,12 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->timestamp('clock_in')->nullable();
-            $table->timestamp('clock_out')->nullable();
+            $table->string('name_of_employee');
+            $table->string('clock_in');
+            $table->string('time');
+            $table->string('attendance_date');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

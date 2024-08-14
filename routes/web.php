@@ -40,6 +40,46 @@ Route::group(['middleware'=>['auth']], function(){
 
     Route::get('/dashboard', [dashboardcontroller::class, 'index'])->name('dashboard');
 
+
+
+// creating users routes
+    #this route is for the user table or list
+    Route::get('/users',[usercontroller::class,'index']);
+
+    #this route is for the users form
+    Route::get('/users/create',[usercontroller::class,'create']);
+    Route::post('/users/create',[usercontroller::class,'store'])->name('user.create');
+
+    //route to return view to edit user details
+    Route::get('/users/{id}/edit',[usercontroller::class,'edit']); 
+
+    //route to return view to view details of a single user
+    Route::get('/users/{id}/watch',[usercontroller::class,'watch']);
+
+    //route to update user details in the database
+    Route::post('/users/{id}/update',[usercontroller::class,'update']);
+    Route::post('/users/{id}/delete',[usercontroller::class,'delete']);
+
+
+// creating employes routes
+    #this route is for the employes table or list
+    Route::get('/employees',[employeecontroller::class,'index']);
+
+    #this route is for the employees form
+    Route::get('/employees/create',[employeecontroller::class,'create']);
+    Route::post('/employees/create',[employeecontroller::class,'store'])->name('employee.create');
+
+    //route to return view to edit employees details
+    Route::get('/employees/{id}/edit',[employeecontroller::class,'edit'])->name('employees.edit');
+
+    //route to return view to view details of a single employee
+    Route::get('/employees/{id}/watch',[employeecontroller::class,'watch']);
+    
+    //route to update employee details in the database
+    Route::post('/employees/{id}/update',[employeecontroller::class,'update']);
+    Route::post('/employees/{id}/delete',[employeecontroller::class,'delete']);
+
+
 // creating assets routes
     #this route is for the assets table or list
     Route::get('/assets',[assetcontroller::class,'index']);
@@ -53,58 +93,12 @@ Route::group(['middleware'=>['auth']], function(){
     // route to return view to view details of a single incomingletters
     Route::get('/assets/{id}/watch',[assetcontroller::class,'watch']);
 
-    // route to update assets details in the database
+    //route to update assets details in the database
     Route::post('/assets/{id}/update',[assetcontroller::class,'update']);
-
     Route::post('/assets/{id}/delete',[assetcontroller::class,'delete']);
 
 
-// creating users routes
-
-    #this route is for the user table or list
-    Route::get('/users',[usercontroller::class,'index']);
-
-    #this route is for the users form
-    Route::get('/users/create',[usercontroller::class,'create']);
-    Route::post('/users/create',[usercontroller::class,'store'])->name('user.create');
-
-    // route to return view to edit user details
-    Route::get('/users/{id}/edit',[usercontroller::class,'edit']);
-
-
-    // route to return view to view details of a single user
-    Route::get('/users/{id}/watch',[usercontroller::class,'watch']);
-
-    // route to update user details in the database
-    Route::post('/users/{id}/update',[usercontroller::class,'update']);
-
-    Route::post('/users/{id}/delete',[usercontroller::class,'delete']);
-
-
-
-// creating employes routes
-    #this route is for the employes table or list
-    Route::get('/employees',[employeecontroller::class,'index']);
-    Route::get('/employees/dropdown', [employeecontroller::class, 'showEmployeeDropdown'])->name('employees.dropdown');
-
-    #this route is for the students form
-    Route::get('/employees/create',[employeecontroller::class,'create']);
-    Route::post('/employees/create',[employeecontroller::class,'store'])->name('employee.create');
-
-    // route to return view to edit employees details
-    Route::get('/employees/{id}/edit',[employeecontroller::class,'edit'])->name('employees.edit');
-
-    // route to return view to view details of a single employee
-    Route::get('/employees/{id}/watch',[employeecontroller::class,'watch']);
-    
-
-    // route to update employee details in the database
-    Route::post('/employees/{id}/update',[employeecontroller::class,'update']);
-
-    Route::post('/employees/{id}/delete',[employeecontroller::class,'delete']);
-
-    // creating incomingletters routes
-
+// creating incomingletters routes
      #this route is for the incomingletters table or list
      Route::get('/incomingletters',[incomingletterscontroller::class,'index']);
 
@@ -112,58 +106,53 @@ Route::group(['middleware'=>['auth']], function(){
      Route::get('/incomingletters/create',[incomingletterscontroller::class,'create']);
      Route::post('/incomingletters/create',[incomingletterscontroller::class,'store'])->name('incomingletters.create');
  
-     // route to return view to edit incomingletters details
+     //route to return view to edit incomingletters details
      Route::get('/incomingletters/{id}/edit',[incomingletterscontroller::class,'edit']);
 
-     // route to return view to view details of a single incomingletters
+     //route to return view to view details of a single incomingletters
      Route::get('/incomingletters/{id}/watch',[incomingletterscontroller::class,'watch']);
  
-     // route to update incomingletters details in the database
+     //route to update incomingletters details in the database
      Route::post('/incomingletters/{id}/update',[incomingletterscontroller::class,'update']);
  
      Route::post('/incomingletters/{id}/delete',[incomingletterscontroller::class,'delete']);
 
 
 // creating outgoingletters routes
+    #this route is for the outgoingletters table or list
+    Route::get('/outgoingletters',[outgoingletterscontroller::class,'index']);
 
-     #this route is for the outgoingletters table or list
-     Route::get('/outgoingletters',[outgoingletterscontroller::class,'index']);
-
-     #this route is for the outgoingletters form
+    #this route is for the outgoingletters form
      Route::get('/outgoingletters/create',[outgoingletterscontroller::class,'create'])->name('outgoingletters.create');
      Route::post('/outgoingletters/create',[outgoingletterscontroller::class,'store'])->name('outgoingletters.create');
 
-     // route to return view to edit outgoingletters details
+     //route to return view to edit outgoingletters details
      Route::get('/outgoingletters/{id}/edit',[incomingletterscontroller::class,'edit']);
 
-     // route to return view to view details of a single incomingletters
+     //route to return view to view details of a single incomingletters
      Route::get('/outgoingletters/{id}/watch',[outgoingletterscontroller::class,'watch']);
  
-     // route to update outgoingletters details in the database
+     //route to update outgoingletters details in the database
      Route::post('/outgoingletters/{id}/update',[outgoingletterscontroller::class,'update']);
- 
      Route::post('/outgoingletters/{id}/delete',[outgoingletterscontroller::class,'delete']);
 
-    // route for file upload
+     
+// route for file upload
     Route::get('/upload', [FileUploadController::class, 'create'])->name('fileupload.create');
     Route::post('/upload', [FileUploadController::class, 'store'])->name('fileupload.store');
     Route::get('/upload/{id}', [FileUploadController::class, 'show'])->name('fileupload.show');
     Route::get('/uploads', [FileUploadController::class, 'index'])->name('fileupload.index');
 
-    // route for attendance
-    Route::post('/clock-in', [AttendanceController::class, 'clockIn'])->name('attendance.clockIn');
-    Route::post('/clock-out', [AttendanceController::class, 'clockOut'])->name('attendance.clockOut');
 
-    #this route is for the outgoingletters table or list
+//  creating attendance routes
+    #this route is for the attendance Clock-in form
     Route::get('/attendance',[AttendanceController::class,'index']);
 
-    #this route is for the outgoingletters form
+    #this route is for the attendance form
     Route::get('/attendance/create',[AttendanceController::class,'create'])->name('attendance.create');
     Route::post('/attendance/create',[AttendanceController::class,'store'])->name('attendance.create');
 
-
-    // creating payment routes
-
+// creating payment routes
     #this route is for the payment table or list
     Route::get('/payments',[paymentcontroller::class,'index']);
 
@@ -171,20 +160,15 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/payments/create',[paymentcontroller::class,'create']);
     Route::post('/payments/create',[paymentcontroller::class,'store'])->name('payments.create');
 
-    // route to return view to edit payment details
+    //route to return view to edit payment details
     Route::get('/payments/{id}/edit',[paymentcontroller::class,'edit']);
 
-
-    // route to return view to view details of a single payment
+    //route to return view to view details of a single payment
     Route::get('/payments/{id}/watch',[paymentcontroller::class,'watch']);
 
-    // route to update payment details in the database
+    //route to update payment details in the database
     Route::post('/payments/{id}/update',[paymentcontroller::class,'update']);
-
-    Route::post('/payments/{id}/delete',[paymentcontroller::class,'delete']);
-
-
-    
+    Route::post('/payments/{id}/delete',[paymentcontroller::class,'delete']);  
 });
 
 Route::get('/register', function () {

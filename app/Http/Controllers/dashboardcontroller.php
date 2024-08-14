@@ -7,6 +7,7 @@ use App\Models\incomingletters;
 use App\Models\outgoingletters;
 use App\Models\assets;
 use App\Models\payments;
+use App\Models\attendance;
 use App\Models\user;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class dashboardController extends Controller
         $incominglettersCount = incomingletters::count();
         $outgoinglettersCount = outgoingletters::count();
         $paymentsCount = payments::count();
+        $attendanceCount = attendance::count();
         $assetCount = assets::count();
-
-        return view('dashboard.index', compact('employeesCount', 'incominglettersCount', 'assetCount', 'outgoinglettersCount','paymentsCount'));
+        return view('dashboard.index', compact('employeesCount', 'incominglettersCount', 'assetCount', 'outgoinglettersCount','paymentsCount','attendanceCount'));
     }
 
   
