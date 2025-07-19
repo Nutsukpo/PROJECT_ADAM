@@ -20,19 +20,23 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Divider -->
+            @can('viewEmployee')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseSix">
                     <i class="fa fa-cog" aria-hidden="true"></i>
-                    <span class="text-bold text-light text-4xl">Employee Management </span>
+                    <span class="text-bold text-light text-4xl">Staff Management </span>
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/employees">Lists</a>
+                        @can('createEmployee')
                         <a class="collapse-item text-dark" href="/employees/create">Add Employee</a>
+                        @endcan
                     </div>
                 </div>
-            </li>   
+            </li>  
+            @endcan 
             <!-- <div class="bg-info"> -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -43,7 +47,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/assets">Lists</a>
+                        @can('createAsset')
                         <a class="collapse-item text-dark" href="/assets/create">Add Asset</a>
+                        @endcan
                     </div>
                 </div>
             </li> 
@@ -58,7 +64,9 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/incomingletters">Lists</a>
+                        @can('createincomingletter')
                         <a class="collapse-item" href="/incomingletters/create">Add letter </a>
+                        @endcan
                     </div>
                 </div>
             </li> 
@@ -72,7 +80,25 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/outgoingletters">Lists</a>
+                        @can('createoutgoingletter')
                         <a class="collapse-item" href="/outgoingletters/create">Add letter </a>
+                        @endcan
+                    </div>
+                </div>
+            </li> 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEleven"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="text-bold text-light text-4xl">Visitors Records </span>  
+                </a>
+                <div id="collapseEleven" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/visitors">List</a>
+                        @can('createVisitor')
+                        <a class="collapse-item" href="/visitors/create">Add Visitor </a>
+                        @endcan
                     </div>
                 </div>
             </li> 
@@ -90,7 +116,7 @@
                     </div>
                 </div>
             </li> 
-
+            @can('viewPayment')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
                     aria-expanded="true" aria-controls="collapseSeven">
@@ -104,6 +130,7 @@
                     </div>
                 </div>
             </li>
+            @endcan
             
             
             <li class="nav-item">
@@ -135,6 +162,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/users">Lists</a>
                         <a class="collapse-item" href="/users/create">Add User </a>
+                        <a class="collapse-item" href="/users/roles">Manage Roles </a>
+                        
+
                     </div>
                 </div>
             </li> 
@@ -149,6 +179,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Tools</a>
                         <a class="collapse-item" href="#">More </a>
+                        
                     </div>
                 </div>
             </li> 

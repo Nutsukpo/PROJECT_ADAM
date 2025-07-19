@@ -37,9 +37,9 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Employee ID</label>
+                    <label>Staff ID</label>
                     <input type="id" class="form-control  @error('student_id') is-invalid @enderror" 
-                    placeholder="Enter Employee ID" name="employee_id" required 
+                    name="employee_id" disabled
                     value="{{old('employee_id')}}">
                     @error('employee_id')
                     <div class="invalid-feedback">
@@ -51,11 +51,11 @@
                     <label>Department</label>
                     <select class="form-control" name="department" >
                         <option value="">Select Department</option>
-                        <option value="coordinator" {{old('department')=='csd'?'selected':''}}>Coordinator</option>
+                        <!-- <option value="coordinator" {{old('department')=='csd'?'selected':''}}>Coordinator</option> -->
                         <option value="engineering" {{old('department')=='csd'?'selected':''}}>Engineering</option>
                         <option value="administration" {{old('department')=='csd'?'selected':''}}>Administration</option>
                         <option value="accounting" {{old('department')=='csd'?'selected':''}}>Accounting</option>
-                        <option value="info tech" {{old('department')=='csd'?'selected':''}}>Info Tech</option>
+                        <option value="Mis" {{old('department')=='csd'?'selected':''}}>MIS</option>
                         <option value="led" {{old('department')=='csd'?'selected':''}}>LED</option>
                         <option value="ess" {{old('department')=='csd'?'selected':''}}>ESS</option>
                         <option value="transport" {{old('department')=='csd'?'selected':''}}>Transport</option>

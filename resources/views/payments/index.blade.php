@@ -73,6 +73,7 @@
                             <!-- </div> -->
                        </div>
             </div>
+            
 @endsection
 <!-- delete Modal -->    
 </div>

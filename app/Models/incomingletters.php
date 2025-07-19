@@ -24,4 +24,22 @@ class incomingletters extends Model
         'file_path',
         
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($incomingletters) {
+            $incomingletters->letter_id = self::generateIncominglettersId();
+        });
+    }
+
+    public static function generateIncominglettersId()
+    {
+        $prefix = 'SBZCOICL'; // Change this as needed
+        $currentYear = date('Y');
+        $uniqueNumber = str_pad((incomingletters::max('id') + 0), 2, '0', STR_PAD_LEFT); // Generates a padded number
+        return $prefix . $currentYear . $uniqueNumber;
+    }
+
 }

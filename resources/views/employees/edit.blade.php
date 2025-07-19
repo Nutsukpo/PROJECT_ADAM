@@ -35,7 +35,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Employee ID</label>
                     <input type="text" class="form-control form-control-user @error('student_id') is-invalid @enderror" 
-                    placeholder="Enter Employee ID" name="employee_id" required 
+                    placeholder="Enter Employee ID" name="employee_id" readonly 
                     value="{{$employee->employee_id}}">
                     @error('employee_id')
                     <div class="invalid-feedback">
@@ -45,16 +45,14 @@
                 </div>
                 <div class="col-sm-6">
                     <label>Department</label>
-                    <select class="form-control" name="department" >
-                        <option value="coordinator" {{old('department')=='csd'?'selected':''}}>Coordinator</option>
-                        <option value="engineering" {{old('department')=='csd'?'selected':''}}>Engineering</option>
-                        <option value="administration" {{old('department')=='csd'?'selected':''}}>Administration</option>
-                        <option value="accounting" {{old('department')=='csd'?'selected':''}}>Accounting</option>
-                        <option value="mis" {{old('department')=='csd'?'selected':''}}>MIS</option>
-                        <option value="led" {{old('department')=='csd'?'selected':''}}>LED</option>
-                        <option value="ess" {{old('department')=='csd'?'selected':''}}>ESS</option>
-                        <option value="driver" {{old('department')=='csd'?'selected':''}}>Driver</option>
-                    </select>   
+                    <input type="text" class="form-control  @error('gender') is-invalid @enderror" 
+                    placeholder="Enter department" name="department" 
+                    value="{{$employee->department}}">
+                    @error('department')
+                    <div class="invalid-feedback">
+                    {{$message}}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">

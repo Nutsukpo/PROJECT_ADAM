@@ -11,7 +11,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Letter ID</label>
                     <input type="text" class="form-control form-control-user @error('letter_id') is-invalid @enderror" 
-                    placeholder="Enter Letter ID" name="letter_id" required 
+                    placeholder="Enter Letter ID" name="letter_id" readonly 
                     value="{{$incomingletters->letter_id}}">
                     @error('letter_id')
                     <div class="invalid-feedback">

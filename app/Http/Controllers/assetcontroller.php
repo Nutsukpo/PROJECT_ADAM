@@ -6,6 +6,7 @@ use App\Models\assets;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -35,7 +36,7 @@ class assetcontroller extends Controller
 
         $Validator = Validator::make($data,[
             'asset_name' =>'required |min:2',
-            'asset_id' =>'sometimes',
+            // 'asset_id' =>'sometimes',
             'asset_type'=>'required',
             'asset_cost' =>'required',
             'serial_number' =>'required',
@@ -50,7 +51,7 @@ class assetcontroller extends Controller
         }
         $asset = assets::create([
             'asset_name' => $data['asset_name'],
-            'asset_id'=>$data['asset_id'],
+            // 'asset_id'=>$data['asset_id'],
             'asset_type'=>$data['asset_type'],
             'asset_cost' =>$data['asset_cost'],
             'serial_number'=>$data['serial_number'],

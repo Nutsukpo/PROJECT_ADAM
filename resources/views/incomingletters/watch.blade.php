@@ -13,6 +13,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>LETTER ID</label>
                     <h6>{{$incomingletters->letter_id}}</h6>
+
                 </div>
                 <div class="col-sm-6">
                     <label>REFERENCE NO:</label>
@@ -70,16 +71,11 @@
     <title>Letter Details</title>
 </head>
 <body>
-    <h2>PDF File:</h2>
-    <embed src="{{ asset('storage/' . $incomingletters->file_path) }}" type="application/pdf" width="100%" height="600px" />
+    <!-- <h2>PDF File:</h2> -->
+    <embed src="{{ asset('storage/' . $incomingletters->file_path) }}" type="application/pdf" width="70%" height="550px" />
 
     <p><a href="{{ asset('storage/' . $incomingletters->file_path) }}" target="_blank">Download PDF</a></p>
 </body>
 </html>
-
-    </div>
-        <div class="col-lg-6 d-none d-lg-block bg-login-image img-fluid float-end">
-            <img class="img-profile-small pt-5"style="size: 20px; width:100%" src="{{asset('img/officeassistant.png')}}">
-        </div>
 </div>
 @endsection

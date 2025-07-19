@@ -23,7 +23,7 @@
                                     </thead>
                                     <tbody>
                                         <!-- using foreach loop to iterate through users list -->
-                                    @foreach($users as $user)
+                                    @forelse($users as $user)
                                         <tr>
                                             <td>{{$user->action}}<a style="text-decoration:none;" href="/users/{{$user->id}}/watch"><i class="text-info">view</i></a></td>
                                             <td>{{ucfirst($user->name)}}</td>
@@ -32,50 +32,64 @@
                                             <td>{{$user->contact}}</td>
                                             <td>{{$user->action}}
                                                 <!-- code to edit -->
-                                                <a href="/users/{{$user->id}}/edit"
-                                                class="btn btn-info btn-square btn-small "><i class=""></i></a>
-
-                                            <!-- code to delete  -->
-                                                <a href="/users/{{$user->id}}/delete"
-                                                class="btn btn-danger btn-square btn-small " data-toggle="modal" data-target="#deleteModal"><i class=""></i></a>                   
+                                                <a href="/users/{{$user->id}}/edit" class="btn btn-info btn-square btn-small "><i class=""></i></a>
+                                                <button class="btn btn-danger btn-small"
+                                                    data-toggle="modal"
+                                                    data-target="#deleteModal"
+                                                    data-id="{{ $user->id }}">
+                                                    <!-- Delete -->
+                                                </button>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <!-- <td colspan="9" class="text-center text-muted">No employees found.</td> -->
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>
                        </div>
                 </div>
-@endsection
-<!-- delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="deleteForm" method="POST">
+            @csrf
+            <!-- @method('DELETE') -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirm Action?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                    <h5 class="modal-title">Confirm Action?</h5>
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Delete" if you want to remove user from the list.</div>
+                
+                <div class="modal-body">
+                    Are you sure you want to delete this user?
+                </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info" type="button" data-dismiss="modal">Cancel</button>
-                    <form action="/users/{{$user->id}}/delete" method="POST">
-                    @csrf
-                    <button class="btn btn-danger" type="submit">
-                        Delete
-                    </button>
-                    </form>
+                    <button class="btn btn-info" type="button" data-dismiss="modal">cancel</button>
+                    <button class="btn btn-danger" type="submit">delete</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+@endsection
+
 @section('scripts')
 <script>
-$(document).ready(function() {
-    $('#dataTable').DataTable();
-});
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let userId = button.data('id');
+        let form = $('#deleteForm');
+        form.attr('action', '/users/' + userId + '/delete');
+    });
+    
 </script>
 @endsection

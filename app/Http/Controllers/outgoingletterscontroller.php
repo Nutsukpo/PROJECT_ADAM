@@ -6,7 +6,7 @@ use App\Models\outgoingletters;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Log;
 
 
 class outgoingletterscontroller extends Controller
@@ -34,22 +34,28 @@ class outgoingletterscontroller extends Controller
         $data = $request->all();
 
         $Validator = Validator::make($data,[
-            'letter_id' =>'required |min:2',
+            // 'letter_id' =>'required |min:2',
             'reference_no' =>'required |min:2',
             'organization_name' =>'required',
             'description' =>'required ',
             'sending_date'=>'required ',
+            'file_path' => 'nullable|mimes:pdf,docx,xlsx,csv,zip|max:10240',
 
         ]);
+        $filePath = null;
+        // Save the PDF file to storage
+        $filePath = $request->file('file_path')->store('uploads/outgoingletters', 'public');
         if ($Validator->fails()) {
             return redirect()->back()->withErrors($Validator)->withInput();
         }
         outgoingletters::create([
-            'letter_id' => $data['letter_id'],
+            // 'letter_id' => $data['letter_id'],
             'reference_no'=>$data['reference_no'],
             'organization_name' =>$data['organization_name'],
             'description'=>$data['description'],
-            'sending_date'=>$data['sending_date']
+            'sending_date'=>$data['sending_date'],
+            'file_path' => $filePath,
+            
             
 
         ]);

@@ -11,7 +11,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Asset Id</label>
                     <input type="text" class="form-control form-control-user @error('asset_id') is-invalid @enderror"
-                    placeholder="Enter Assets Id" name="asset_id" required 
+                    placeholder="ID" name="asset_id" readonly  
                     value="{{$asset->asset_id}}">
                     @error('asset_id')
                     <div class="invalid-feedback">

@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\Log;
 
 class incomingletterscontroller extends Controller
 {   
@@ -34,7 +35,7 @@ class incomingletterscontroller extends Controller
         $data = $request->all();
    
         $Validator = Validator::make($data,[
-            'letter_id' =>'required',
+            // 'letter_id' =>'required',
             'reference_no' =>'required ',
             'organization_name' =>'required',
             'description' =>'required ',
@@ -53,7 +54,7 @@ class incomingletterscontroller extends Controller
             return redirect()->back()->withErrors($Validator)->withInput();
         }
         incomingletters::create([
-            'letter_id' => $data['letter_id'],
+            // 'letter_id' => $data['letter_id'],
             'reference_no'=>$data['reference_no'],
             'organization_name' =>$data['organization_name'],
             'description'=>$data['description'],
@@ -83,7 +84,7 @@ class incomingletterscontroller extends Controller
         //save the datarequest to a variable called data 
         $data= $resquest->all();
         $Validator = Validator::make($data,[
-            'letter_id' =>'required |min:2'|'Unique',
+            // 'letter_id' =>'required |min:2'|'Unique',
             'reference_no' =>'required |min:2',
             'organization_name' =>'required',
             'description' =>'required ',

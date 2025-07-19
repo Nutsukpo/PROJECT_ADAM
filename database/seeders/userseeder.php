@@ -17,21 +17,21 @@ class userseeder extends Seeder
         // DB::table('users')->insert([
         //     'name' => 'isaac',
         //     'email' => 'isaac@test.com',
-        //     'contact' => '0542013350',
+        //     'contact' => '0542013243',
         //     'password' => 'test123'
         // ]);
 
         // user::create ([
         // 'name' => 'SYSTEM ADMIN',
         // 'email' => 'admin@test.com',
-        // 'contact' => '0542013350',
+        // 'contact' => '0542013322',
         // 'password' => 'password'
         // ]);
         user::create ([
             'name' => 'Mother-Side php WebArtisan',
             'title' => 'Developer',
             'email' => 'e.nutsukpo@gmail.com',
-            'contact' => '0542013350',
+            'contact' => '0520133787',
             'password' => 'Mon@0542013350'
         ]);
 

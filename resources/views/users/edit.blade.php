@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','Add user')
+@section('title','Edit user')
 
 @section('content')
 <div class="card shadow mb-4">
@@ -54,6 +54,45 @@
                         {{$message}}
                     </div>
                     @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                    <label>Assign Role</label>
+                    <select class="form-control" name="role" >
+                        <option value="">Select Role</option>
+                        @foreach($roles as $role)
+                        <option value="{{ $role->id }}" 
+                            {{ (old('role', optional($user->roles->first())->id) == $role->id) ? 'selected' : '' }}>
+                            {{ $role->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    @error('role')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror     
+                </div>
+            </div>
+            <div class="form-group row">
+                <label>Assign Permissions</label>
+                <div class="row">
+                    @foreach($permissions as $permission)
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input type="checkbox"
+                                       name="permissions[]"
+                                       value="{{ $permission->name }}"
+                                       id="perm_{{ $permission->id }}"
+                                       class="form-check-input"
+                                       {{ $user->permissions->pluck('id')->contains($permission->id) ? 'checked' : '' }}>
+                                <label for="perm_{{ $permission->id }}" class="form-check-label">
+                                    {{ ucwords(str_replace('_', ' ', $permission->name)) }}
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <button type="submit" class="btn text-light btn-user btn-block" style="background-color:cadetblue">

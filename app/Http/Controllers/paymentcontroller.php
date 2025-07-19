@@ -7,7 +7,7 @@ use App\Models\employees;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Log;
 
 
 class paymentcontroller extends Controller
@@ -41,7 +41,7 @@ class paymentcontroller extends Controller
         $data = $request->all();
         // dd($data);
         $Validator = Validator::make($data,[
-            'voucher_id' =>'required ',
+            // 'voucher_id' =>'required ',
             'payment_date' =>'required',
             'name_of_employee' =>'required ',
             'month_of_payment' =>'required ',
@@ -52,7 +52,7 @@ class paymentcontroller extends Controller
             return redirect()->back()->withErrors($Validator)->withInput();
         }
         payments::create([
-            'voucher_id' => $data['voucher_id'],
+            // 'voucher_id' => $data['voucher_id'],
             'payment_date'=>$data['payment_date'],
             'name_of_employee' =>$data['name_of_employee'],
             'month_of_payment' =>$data['month_of_payment'],
@@ -74,7 +74,7 @@ class paymentcontroller extends Controller
         //save the datarequest to a variable called data 
         $data= $resquest->all();
         $Validator = Validator::make($data,[
-            'voucher_id' =>'required |min:2',
+            // 'voucher_id' =>'required |min:2',
             'payment_date' =>'required ',
             'name_of_employee' =>'required ',
             'month_of_payment' =>'required ',

@@ -84,6 +84,25 @@
                     </div>
                     @enderror
                 </div> 
+            </div> 
+            <div class="form-group row">
+          
+                <div class="col-sm-6 ">
+                    <label>Role</label>
+                    <select class="form-control" name="role" >
+                        <option value="">Select Role</option>
+                        @foreach($roles as $role)
+                            <option value="{{$role->id}}" {{old('role')=='csd'?'selected':''}}>{{ $role->name }}</option>
+                        @endforeach
+                        <!-- <option value="coordinator" {{old('department')=='csd'?'selected':''}}>Coordinator</option> -->
+                        
+                    </select>
+                    @error('role')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div> 
             </div>  
             <button type="submit" class="btn text-light btn-block" style="background-color:cadetblue">
                 Save

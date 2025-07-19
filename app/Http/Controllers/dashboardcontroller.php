@@ -10,6 +10,7 @@ use App\Models\payments;
 use App\Models\attendance;
 use App\Models\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class dashboardController extends Controller
 {

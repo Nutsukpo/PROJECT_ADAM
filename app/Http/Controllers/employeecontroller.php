@@ -3,136 +3,132 @@
 namespace App\Http\Controllers;
 
 use App\Models\employees;
-use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-
+use Illuminate\Support\Facades\Log;
 
 class employeecontroller extends Controller
-{   
-    public function show(employees $post)
+{
+    public function show(employees $employee)
     {
-        $this->authorize('view', $post);
+        $this->authorize('view', $employee);
+        return view('employees.show', ['employee' => $employee]);
+    }
 
-        return view('posts.show', ['post' => $post]);
+    // Display a list of employees
+    public function index()
+    {
+        $employees = employees::all();
+        return view('employees.index', ['employees' => $employees]);
     }
-    
-    //func to return employees list view
-    public function index(){
-        // fetch all employees fromm the db
-        $employees= employees::all();
-        // return the view data
-        return view('employees.index',['employees'=>$employees]);
-    }
-    //func to return the form to add a new employee to the list
-    public function create(){
+
+    // Show the form to create a new employee
+    public function create()
+    {
         return view('employees.create');
     }
-    // func to store data in the database
-    public function store(Request $request){
+
+    // Store a new employee in the database
+    public function store(Request $request)
+    {
         $data = $request->all();
-        //   dd($data);
 
-        $Validator = Validator::make($data,[
-            'firstname' =>'required |min:2',
-            'lastname' =>'required |min:2',
-            'email' =>'required |email |unique:employees,email',
-            'employee_id' =>'required |unique:employees,employee_id',
-            'department'=>'required ',
-            'contact' =>'required | min:10 | max:13 |unique:employees,contact',
-            'address' =>'required',
-            'position' =>'required',
-            'picture' =>'nullable |image|mimes:jpg,png,jpeg,gif|max:2048',
-
+        $validator = Validator::make($data, [
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'email' => 'required|email|unique:employees,email',
+            'department' => 'required',
+            'contact' => 'required|min:10|max:13|unique:employees,contact',
+            'address' => 'required',
+            'position' => 'required',
+            'picture' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048',
         ]);
 
-        $imagePath = null;
-
-        // // Check if an image is uploaded
-        // if ($request->hasFile($imagePath)) {
-        //     $imagePath = $request->file('picture')->store('employees', 'public');
-        // }
-        $imagePath = $request->file('picture')->store('uploads/employees', 'public');
-        if ($Validator->fails()) {
-            return redirect()->back()->withErrors($Validator)->withInput();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
+
+        // Handle image upload
+        $imagePath = null;
+        if ($request->hasFile('picture')) {
+            $imagePath = $request->file('picture')->store('uploads/employees', 'public');
+        }
+
+        // Generate a unique employee ID
+        do {
+            $employee_id = 'SBZCOS' . rand(100000, 999999);
+        } while (employees::where('employee_id', $employee_id)->exists());
+
+        // Create the employee
         employees::create([
             'firstname' => $data['firstname'],
-            'lastname'=>$data['lastname'],
-            'email' =>$data['email'],
-            'employee_id' =>$data['employee_id'],
-            'department'=>$data['department'],
-            'contact' =>$data['contact'],
-            'address' =>$data['address'],
-            'position' =>$data['position'],
-            'picture' =>$imagePath,
-
-
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'employee_id' => $employee_id,
+            'department' => $data['department'],
+            'contact' => $data['contact'],
+            'address' => $data['address'],
+            'position' => $data['position'],
+            'picture' => $imagePath,
         ]);
-        
-        return redirect()->intended('employees')->with('messages','employee added successfully');
-    }
-    // fun to return the form for editing
-    public function edit($id){
-        //find students records with the id provided
-        $employee= employees::find($id);
-        // return the edit.blade.php which is in the employee folder and pass the data to it
-        return view('employees.edit',['employee'=>$employee]);
-    }
-    // function to update column in the database
-    public function update(Request $resquest, $id){
-        
-        //save the datarequest to a variable called data 
-        $data= $resquest->all();
-        $Validator = Validator::make($data,[
-            'firstname' =>'required |min:2',
-            'lastname' =>'required |min:2',
-            'email' =>'required |email',
-            'employee_id' =>'required ',
-            'department'=>'required ',
-            'contact' =>'required | min:10 | max:13 ',
-            'address' =>'required',
-            'position' =>'required',
-            
 
+        return redirect()->intended('employees')->with('messages', 'employee added successfully');
+    }
+
+    // Show the form to edit an employee
+    public function edit($id)
+    {
+        $employee = employees::findOrFail($id);
+        return view('employees.edit', ['employee' => $employee]);
+    }
+
+    // Update an existing employee
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'email' => 'required|email',
+            'employee_id' => 'required',
+            'department' => 'required',
+            'contact' => 'required|min:10|max:13',
+            'address' => 'required',
+            'position' => 'required',
         ]);
-        //if validation fails return back with errors
-        if ($Validator->fails()) {
-           return redirect()->back()->withErrors($Validator)->withInput();
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        //find the student with the id coming first
-        $employee = employees::find($id);
-        // check if the employees is already in the list then update else return error 
-        if ($employee) {
-            $employee->firstname = $data['firstname'];
-            $employee->lastname = $data['lastname'];
-            $employee->email = $data['email'];
-            $employee->employee_id = $data['employee_id'];
-            $employee->department = $data['department'];
-            $employee->contact = $data['contact'];
-            $employee->address= $data['address'];
-            $employee->position= $data['position'];
+        $employee = employees::findOrFail($id);
+        $employee->firstname = $data['firstname'];
+        $employee->lastname = $data['lastname'];
+        $employee->email = $data['email'];
+        $employee->employee_id = $data['employee_id'];
+        $employee->department = $data['department'];
+        $employee->contact = $data['contact'];
+        $employee->address = $data['address'];
+        $employee->position = $data['position'];
+        $employee->save();
 
-            // save the new changes
-            $employee->save();
-
-            return redirect()->intended('employees')->with('messages','employee updated successfully');
-        }
-        return redirect()->back();
+        return redirect()->intended('employees')->with('messages','employees updated successfully');
     }
 
-    // function to delete an employee
+    // Delete an employee
     public function delete($id){
         employees::find($id)->delete();
         return redirect()->intended('employees')->with('messages','employee deleted successfully');
     }
-    public function watch($id){
-        //find user records with the id provided
-        $employee= employees::find($id);
-        // return the edit.blade.php which is in the employee folder and pass the data to it
-        return view('employees.watch',['employee'=>$employee]);
-    }
     
+
+
+
+    // View a single employee's details
+    public function watch($id)
+    {
+        $employee = employees::findOrFail($id);
+        return view('employees.watch', ['employee' => $employee]);
+    }
 }

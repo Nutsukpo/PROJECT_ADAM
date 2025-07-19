@@ -5,7 +5,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form class="outgoingletters" action="{{route('outgoingletters.create')}}" method="POST">
+        <form class="outgoingletters" action="{{route('outgoingletters.create')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h5 class="text-dark">Adding outgoingletter </h5>
@@ -15,7 +15,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Letter Id</label>
                     <input type="text" class="form-control  @error('letter_id') is-invalid @enderror" 
-                    placeholder="Enter letter_id" name="letter_id" required 
+                    placeholder="ID" name="letter_id" readonly 
                     value="{{old('letter_id')}}">
                     @error('letter_id')
                     <div class="invalid-feedback">
@@ -68,6 +68,12 @@
                     {{$message}}
                 </div>
                 @enderror
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Upload Image</label><br>
+                    <input type="file" name="file_path" id="file_path" >    
+                </div>
             </div>
             <button type="submit" class="btn text-light btn-user btn-block" style="background-color:cadetblue">
                 Save
