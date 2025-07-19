@@ -44,9 +44,11 @@ class incomingletterscontroller extends Controller
             'sender'=>'required ',
             'mode_of_letter'=>'required ',
             'name_of_person_receiving'=>'required ',
-
-
+            'file_path' => 'nullable|mimes:pdf|max:10240',
         ]);
+        $filePath = null;
+        // Save the PDF file to storage
+        $filePath = $request->file('file_path')->store('uploads/incomingletters', 'public');
         if ($Validator->fails()) {
             return redirect()->back()->withErrors($Validator)->withInput();
         }
@@ -61,6 +63,7 @@ class incomingletterscontroller extends Controller
             'sender'=>$data['sender'],
             'mode_of_letter'=>$data['mode_of_letter'],
             'name_of_person_receiving'=>$data['name_of_person_receiving'],
+            'file_path' => $filePath,
 
             
 

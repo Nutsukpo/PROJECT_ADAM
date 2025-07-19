@@ -19,6 +19,7 @@ class employees extends Model
         'department',
         'position',
         'address',
+        'picture',
 
     ];
 }

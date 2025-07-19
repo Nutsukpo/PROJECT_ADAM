@@ -136,14 +136,6 @@ Route::group(['middleware'=>['auth']], function(){
      Route::post('/outgoingletters/{id}/update',[outgoingletterscontroller::class,'update']);
      Route::post('/outgoingletters/{id}/delete',[outgoingletterscontroller::class,'delete']);
 
-     
-// route for file upload
-    Route::get('/upload', [FileUploadController::class, 'create'])->name('fileupload.create');
-    Route::post('/upload', [FileUploadController::class, 'store'])->name('fileupload.store');
-    Route::get('/upload/{id}', [FileUploadController::class, 'show'])->name('fileupload.show');
-    Route::get('/uploads', [FileUploadController::class, 'index'])->name('fileupload.index');
-
-
 //  creating attendance routes
     #this route is for the attendance Clock-in form
     Route::get('/attendance',[AttendanceController::class,'index']);

@@ -61,6 +61,22 @@
                     <h6>{{$incomingletters->receiving_date}}</h6>
                 </div>
             </div>
+            <!-- resources/views/incoming_letters/show.blade.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Details</title>
+</head>
+<body>
+    <h2>PDF File:</h2>
+    <embed src="{{ asset('storage/' . $incomingletters->file_path) }}" type="application/pdf" width="100%" height="600px" />
+
+    <p><a href="{{ asset('storage/' . $incomingletters->file_path) }}" target="_blank">Download PDF</a></p>
+</body>
+</html>
+
     </div>
         <div class="col-lg-6 d-none d-lg-block bg-login-image img-fluid float-end">
             <img class="img-profile-small pt-5"style="size: 20px; width:100%" src="{{asset('img/officeassistant.png')}}">

@@ -5,7 +5,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form class="employee" action="{{route('employee.create')}}" method="POST">
+        <form class="employee" action="{{route('employee.create')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h5 class="text-dark">Adding Employee </h5>
@@ -109,6 +109,12 @@
                         {{$message}}
                     </div>
                     @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Upload Image</label><br>
+                    <input type="file" name="picture" id="picture" >    
                 </div>
             </div>
             <button type="submit" class="btn text-light btn-user btn-block"  style="background-color:cadetblue ;">

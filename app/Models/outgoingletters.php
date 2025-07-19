@@ -16,6 +16,7 @@ class outgoingletters extends Model
         'organization_name',
         'description',
         'sending_date',
+        'file_path',
     ];
 }
 

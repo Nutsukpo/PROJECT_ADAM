@@ -5,7 +5,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form class="incomingletters" action="{{route('incomingletters.create','fileupload.store')}}" method="POST">
+        <form class="incomingletters" action="{{route('incomingletters.create','fileupload.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h5 class="text-dark">Adding Incomingletter </h5>
@@ -132,33 +132,15 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="container mt-5">
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form action="{{ route('fileupload.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="file">Choose File</label>
-                        <input type="file" class="form-control-file" id="file" name="file" required>
-                    </div>
-                    <button type="submit" class="btn btn text-light btn-user btn-block" style="background-color:cadetblue" >Save</button>
-                            </form>
-                        </div> 
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Upload Image</label><br>
+                    <input type="file" name="file_path" id="file_path" >    
+                </div>
             </div>
+            <button type="submit" class="btn text-light btn-user btn-block"  style="background-color:cadetblue ;">
+                Save
+            </button>
+            <hr>
         </form>
     </div>
 </div>

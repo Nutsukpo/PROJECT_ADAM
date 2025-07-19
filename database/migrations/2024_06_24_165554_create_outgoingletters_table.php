@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('organization_name');
             $table->string('description');
             $table->string('sending_date');
+            $table->string('file_path')->nullable();
             $table->timestamps();
             $table->softDeletesDatetime();
         });

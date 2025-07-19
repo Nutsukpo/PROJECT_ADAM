@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('department');
             $table->string('position');
             $table->string('address');
+            $table->string('picture')->nullable();
             $table->timestamps();
             $table->softDeletesDatetime();
         });

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('sender');
             $table->string('mode_of_letter');
             $table->string('name_of_person_receiving');
-
+            $table->string('file_path')->nullable();
             $table->timestamps();
             $table->softDeletesDatetime();
         });

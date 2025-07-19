@@ -32,6 +32,7 @@ class employeecontroller extends Controller
     // func to store data in the database
     public function store(Request $request){
         $data = $request->all();
+        //   dd($data);
 
         $Validator = Validator::make($data,[
             'firstname' =>'required |min:2',
@@ -42,8 +43,17 @@ class employeecontroller extends Controller
             'contact' =>'required | min:10 | max:13 |unique:employees,contact',
             'address' =>'required',
             'position' =>'required',
+            'picture' =>'nullable |image|mimes:jpg,png,jpeg,gif|max:2048',
 
         ]);
+
+        $imagePath = null;
+
+        // // Check if an image is uploaded
+        // if ($request->hasFile($imagePath)) {
+        //     $imagePath = $request->file('picture')->store('employees', 'public');
+        // }
+        $imagePath = $request->file('picture')->store('uploads/employees', 'public');
         if ($Validator->fails()) {
             return redirect()->back()->withErrors($Validator)->withInput();
         }
@@ -56,9 +66,11 @@ class employeecontroller extends Controller
             'contact' =>$data['contact'],
             'address' =>$data['address'],
             'position' =>$data['position'],
+            'picture' =>$imagePath,
 
 
         ]);
+        
         return redirect()->intended('employees')->with('messages','employee added successfully');
     }
     // fun to return the form for editing
@@ -82,6 +94,7 @@ class employeecontroller extends Controller
             'contact' =>'required | min:10 | max:13 ',
             'address' =>'required',
             'position' =>'required',
+            
 
         ]);
         //if validation fails return back with errors

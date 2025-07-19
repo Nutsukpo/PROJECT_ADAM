@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-xl-2 col-md-4 mb-2">
         <div class="card border-left bg-info shadow h-100 py-2">
             <div class="card-body">
@@ -62,7 +61,6 @@
             </div>
         </div>
     </div>
-
     <!-- Assets Card -->
     <div class="col-xl-2 col-md-4 mb-2">
         <div class="card border-left shadow h-100 py-2" style="background-color:burlywood">
@@ -80,7 +78,6 @@
             </div>
         </div>
     </div>
-
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-4 mb-2">
         <div class="card border-left shadow h-100 py-2" style="background-color:cadetblue">
@@ -109,7 +106,6 @@
             </div>
         </div>
     </div>
-
     <!-- Pending Requests Card Example -->
     <div class="col-xl-2 col-md-4 mb-2">
         <div class="card border-left bg-danger shadow h-100 py-2">
@@ -128,13 +124,7 @@
         </div>
     </div>
 </div>
-
-<!-- Content Row -->
-
-
 <div class="row">
-
-    <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
@@ -164,8 +154,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
@@ -205,7 +193,6 @@
                     </span>
                 </div>
             </div>
-
             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Dropdown Header:</div>
@@ -220,12 +207,9 @@
 </div>
 @endsection
 
-
-
 @section('scripts')
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
-
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
 <script src="js/demo/chart-pie-demo.js"></script>

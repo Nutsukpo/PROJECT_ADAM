@@ -21,6 +21,7 @@ class incomingletters extends Model
         'organization_name',
         'description',
         'receiving_date',
+        'file_path',
         
     ];
 }

@@ -21,12 +21,12 @@
 
             <!-- Divider -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseSix">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="text-bold text-light text-4xl">Employee Management </span>
                 </a>
-                <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/employees">Lists</a>
                         <a class="collapse-item text-dark" href="/employees/create">Add Employee</a>
@@ -37,8 +37,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
-                    <span class="text-bold text-light text-4xl">Asset Management </span>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="text-bold text-light text-4xl">Asset Register </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -52,7 +52,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="text-bold text-light text-4xl">In-coming letters</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -66,7 +66,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
                     aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="text-bold text-light text-4xl">Out-going-letters </span>
                 </a>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -78,12 +78,12 @@
             </li> 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEight"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
                     aria-expanded="true" aria-controls="collapseEight">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="text-bold text-light text-4xl">Attendance Manager </span>
                 </a>
-                <div id="collapseEight" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseFive" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/attendance">Lists</a>
                         <a class="collapse-item" href="/attendance/create">Attendance </a>
@@ -92,33 +92,80 @@
             </li> 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
                     aria-expanded="true" aria-controls="collapseSeven">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="text-bold text-light text-4xl">Payments </span>
                 </a>
-                <div id="collapseSeven" class="collapse bg-dark aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseSix" class="collapse bg-dark aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/payments">Lists</a>
                         <a class="collapse-item" href="/payments/create">Pay Saff</a>
                     </div>
                 </div>
-            </li> 
+            </li>
+            
+            
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
-                    aria-expanded="true" aria-controls="collapseFive">
-                    <i class="fas fa-fw fa-cog bg-light"></i>
-                    <span class="text-bold text-light text-4xl">User Management </span>
-                    
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven"
+                    aria-expanded="true" aria-controls="collapseTen">
+                    <!-- <i class="fas fa-fw fa-cog bg-light"></i> -->
+                    <!-- <i class="fa fa-thermometer-full fa-4x bg-danger" aria-hidden="true"></i> -->
+                    <!-- <i class="fa fa-cog" aria-hidden="true"></i> -->
+                    <i class="fa fa-fighter-jet" aria-hidden="true"></i>
+
+                    <span class="text-bold text-warning text-4xl">MeMo Tracker </span> 
+                    <i class="bi bi-sign-railroad"></i> 
                 </a>
-                <div id="collapseFive" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseSeven" class="collapse bg-warning" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-warning py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">MeMo List</a>
+                        <a class="collapse-item" href="#">Add Memo </a>
+                    </div>
+                </div>
+            </li> 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEight"
+                    aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="text-bold text-light text-4xl">User Management </span>  
+                </a>
+                <div id="collapseEight" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/users">Lists</a>
                         <a class="collapse-item" href="/users/create">Add User </a>
                     </div>
                 </div>
             </li> 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/users/create" data-toggle="collapse" data-target="#collapseNine"
+                    aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="text-bold text-light text-4xl">System Settings </span>  
+                </a>
+                <div id="collapseNine" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Tools</a>
+                        <a class="collapse-item" href="#">More </a>
+                    </div>
+                </div>
+            </li> 
           
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTen"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="text-bold text-light text-4xl">Help </span>  
+                </a>
+                <div id="collapseTen" class="collapse bg-white" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Online Help</a>
+                        <a class="collapse-item" href="#">Contact Admin </a>
+                    </div>
+                </div>
+            </li> 
           
 
             <!-- Divider -->        
