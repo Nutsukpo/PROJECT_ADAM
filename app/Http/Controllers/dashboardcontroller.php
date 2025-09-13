@@ -23,7 +23,6 @@ class dashboardController extends Controller
         $attendanceCount = attendance::count();
         $assetCount = assets::count();
         return view('dashboard.index', compact('employeesCount', 'incominglettersCount', 'assetCount', 'outgoinglettersCount','paymentsCount','attendanceCount'));
-    }
-
-  
+    } 
 }
+

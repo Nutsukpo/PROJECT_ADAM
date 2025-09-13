@@ -7,38 +7,32 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\PermissionRegistrar;
 
 class RolesAndUsersSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         // Clear cached roles and permissions
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Define all permissions
-        $models = ['Employee', 'Visitor', 'User', 'Asset', 'Payment', 'IncomingLetter', 'OutgoingLetter', 'Attendance', 'Settings', 'Help', 'MemoTracker', 'Report']; 
+        // Define modules and actions
+        $modules = [
+            'Employee', 'Visitor', 'User', 'Asset', 'Payment',
+            'IncomingLetter', 'OutgoingLetter', 'Attendance',
+            'Settings', 'Help', 'Memo', 'Report'
+        ];
+
         $actions = ['create', 'view', 'edit', 'delete', 'status'];
 
-        // $permissions = [
-        //     'createVisitor',
-        //     'viewVisitors',
-        //     'editVisitor',
-        //     'deleteVisitor',
-        //     'manageUsers',
-        //     'viewEmployee',
-        //     'createEmployee',
-        //     'updateEmployee',
-        //     'deleteEmployee',
-        //     'assignRoles',
-        //     'viewReports',
-        //     'exportData',
-        // ];
-
         // Create permissions
-        foreach ($models as $model) {
-            foreach ($actions as $action){
-                $name = "$action$model";
-                Permission::firstOrCreate(['name' => $name]);
+        foreach ($modules as $module) {
+            foreach ($actions as $action) {
+                $permission = "{$action}{$module}";
+                Permission::firstOrCreate(['name' => $permission]);
             }
         }
 
@@ -47,54 +41,59 @@ class RolesAndUsersSeeder extends Seeder
         $staffRole = Role::firstOrCreate(['name' => 'Staff']);
         $guestRole = Role::firstOrCreate(['name' => 'Guest']);
 
-        // Assign permissions to roles
+        // Assign all permissions to Admin
         $adminRole->syncPermissions(Permission::all());
 
-        $staffRole->syncPermissions([
-            'createVisitor',
-            'viewVisitor',
-            'editVisitor',
-        ]);
+    //     // Assign limited permissions to Staff
+    //     $staffPermissions = [
+    //         'createVisitor',
+    //         'viewVisitor',
+    //         'editVisitor',
+    //         'deleteVisitor',
+    //    ];
+    //     $staffRole->syncPermissions($staffPermissions);
 
-        $guestRole->syncPermissions([
-            'viewVisitor',
-            'viewEmployee'
-        ]);
+        // // Assign very limited permissions to Guest
+        // $guestPermissions = [
+        //     'viewVisitor',
+        //     'viewEmployee',
+        // ];
+        // $guestRole->syncPermissions($guestPermissions);
 
-        // Create admin user
+        // Create Admin user
         $admin = User::firstOrCreate(
-            ['email' => 'admin@adam1.com'],
+            ['email' => 'phpwebartisan@gmail.com'],
             [
+                'name' => 'Web Artisan',
+                'title' => 'Developer',
                 'contact' => '0540000008',
-                'title'=>'MIS Officer',
-                'name' => 'Admin User',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('php@ADAM'),
             ]
         );
         $admin->assignRole($adminRole);
 
-        // Create staff user
-        $staff = User::firstOrCreate(
-            ['email' => 'staff@adam1.com'],
-            [
-                'contact' => '0540000007',
-                'title'=>'MIS Officer',
-                'name' => 'Staff User',
-                'password' => Hash::make('password123'),
-            ]
-        );
-        $staff->assignRole($staffRole);
+    //     // Create Staff user
+    //     $staff = User::firstOrCreate(
+    //         ['email' => 'staff@adam1.com'],
+    //         [
+    //             'name' => 'Staff User',
+    //             'title' => 'MIS Officer',
+    //             'contact' => '0540000007',
+    //             'password' => Hash::make('password123'),
+    //         ]
+    //     );
+    //     $staff->assignRole($staffRole);
 
-        // Create guest user
-        $guest = User::firstOrCreate(
-            ['email' => 'guest@adam1.com'],
-            [
-                'contact' => '0540000006',
-                'title'=>'MIS Officer',
-                'name' => 'Guest User',
-                'password' => Hash::make('password123'),
-            ]
-        );
-        $guest->assignRole($guestRole);
-    }
+    //     // Create Guest user
+    //     $guest = User::firstOrCreate(
+    //         ['email' => 'guest@adam1.com'],
+    //         [
+    //             'name' => 'Guest User',
+    //             'title' => 'MIS Officer',
+    //             'contact' => '0540000006',
+    //             'password' => Hash::make('password123'),
+    //         ]
+    //     );
+    //     $guest->assignRole($guestRole);
+     }
 }

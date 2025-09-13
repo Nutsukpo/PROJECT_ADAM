@@ -1,90 +1,135 @@
 @extends('layout.master')
 
-@section('title','watch Employee')
+@section('title', 'Employee Details')
 
 @section('content')
-<div>
-    <h2 class="bg info">Details of Employee </h2>
-</div>
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <form class="employee" action="/employees/{{$employee->id}}/update" method="POST">
-            @csrf
-        
-                <div class="container">
-                    <div class="row">
-                        <!-- Column 1 -->
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>FIRST NAME: </label>
-                                        <h6>{{$employee->firstname}}</h6>
-                                    </div><br/>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>LAST NAME: </label>
-                                        <h6>{{$employee->lastname}}</h6>
-                                    </div><br/>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>STAFF ID: </label>
-                                        <h6>{{$employee->employee_id}}</h6>
-                                    </div><br>
-                                    <div class="col-sm-6 ">
-                                        <label>POSITION: </label>
-                                        <h6>{{$employee->position}}</h6>
-                                    </div><br/><br/>
-                                </div>
-                            </div>
-                        </div>
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Staff Details</h1>
+        <div>
+            <a href="/employees" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left fa-sm"></i> Back to List
+            </a>
+            @can('editEmployee')
+            <a href="/employees/{{$employee->id}}/edit" class="btn btn-info btn-sm">
+                <i class="fas fa-edit fa-sm"></i> Edit Profile
+            </a>
+            @endcan
+        </div>
+    </div>
 
-                        <!-- Column 2 -->
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="col-sm-6">
-                                        <label>CONTACT: </label>
-                                        <h6>{{$employee->contact}}</h6>
-                                    </div><br/>
-                                    <div class="col-sm-6">
-                                        <label>DEPARTMENT: </label>
-                                        <h6>{{$employee->department}}</h6>
-                                    </div><br>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>EMAIL: </label>
-                                        <h6>{{$employee->email}}</h6>
-                                    </div>
-                                    <br>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>ADDRESS: </label>
-                                        <h6>{{$employee->address}}</h6>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Employee Details Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 " style="background-color: cadetblue;">
+            <h6 class="m-0 font-weight-bold text-white">
+                {{ $employee->firstname }} {{ $employee->lastname }} - {{ $employee->employee_id }}
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Personal Info Column -->
+                <div class="col-lg-4">
+                    <div class="card mb-4 border-left-info">
+                        <div class="card-header py-3 bg-light">
+                            <h6 class="m-0 font-weight-bold text-info">Personal Information</h6>
                         </div>
-
-                        <!-- Column 3 -->
-                        <div class="col-md-4">
-                            <div class="card mb-5">
-                                
-                                <div class="card-body">
-                                    <label >STAFF IMAGE : </label><br>
-                                        <div class="">
-                                        <img title="{{$employee->firstname}} {{$employee->lastname}} {{$employee->contact}}"class="img-profile-small pt-1" style="size: 20px; width:100%; height:100%;" 
-                                            src="{{ asset(path: 'storage/'. $employee->picture)}}" 
-                                            alt="Employee Picture" width="100" height="100">
-                                    </div>
-                                </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Full Name</label>
+                                <p class="font-weight-bold">{{ $employee->firstname }} {{ $employee->lastname }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Staff ID</label>
+                                <p class="font-weight-bold">{{ $employee->employee_id }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Position</label>
+                                <p class="font-weight-bold">{{ $employee->position }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Department</label>
+                                <p class="font-weight-bold">{{ $employee->department }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-        </form>
+
+                <!-- Contact Info Column -->
+                <div class="col-lg-4">
+                    <div class="card mb-4 border-left-info">
+                        <div class="card-header py-3 bg-light">
+                            <h6 class="m-0 font-weight-bold text-info">Contact Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Email Address</label>
+                                <p class="font-weight-bold">{{ $employee->email }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Phone Number</label>
+                                <p class="font-weight-bold">{{ $employee->contact }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small font-weight-bold text-gray-600">Physical Address</label>
+                                <p class="font-weight-bold">{{ $employee->address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Column -->
+                <div class="col-lg-4">
+                    <div class="card mb-4 border-left-info">
+                        <div class="card-header py-3 bg-light">
+                            <h6 class="m-0 font-weight-bold text-info">Staff Photo</h6>
+                        </div>
+                        <div class="card-body text-center">
+                            @if($employee->picture)
+                            <img class="img-profile rounded-circle mb-3" 
+                                 style="width: 300px; height: 400px; object-fit: cover;"
+                                 src="{{ asset('storage/'.$employee->picture) }}" 
+                                 alt="{{ $employee->firstname }} {{ $employee->lastname }}"
+                                 title="{{ $employee->firstname }} {{ $employee->lastname }} | {{ $employee->position }}">
+                            @else
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 200px; height: 200px; margin: 0 auto;">
+                                <i class="fas fa-user fa-4x text-gray-400"></i>
+                            </div>
+                            @endif
+                            <div class="mt-3">
+                                <span class="badge badge-info p-2">{{ $employee->position }}</span>
+                                <!-- <span class="badge badge-info p-2">{{ $employee->department }}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Sections (if needed) -->
+            <div class="row">
+                <!-- You can add more sections here like employment history, documents, etc. -->
+            </div>
+        </div>
     </div>
-    <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image d-sm-flex align-items-center justify-content-between">
-            <img class="img-profile-small pt-5"style="size: 20px; width:100%" src="{{asset('img/officeassistant.png')}}">
-        </div> -->
 </div>
 @endsection
 
-
-                    
+@section('styles')
+<style>
+    .img-profile {
+        border: 3px solid #ddd;
+        transition: all 0.3s;
+    }
+    .img-profile:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .card-header {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+    .small {
+        font-size: 0.875rem;
+    }
+</style>
+@endsection

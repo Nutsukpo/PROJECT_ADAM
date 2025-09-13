@@ -5,7 +5,7 @@
 @section('content')
 <div class="card shadow mb-4">
             <div class="card-header py-3 d-sm-flex align-items-center justify-content-between">
-                <h5 class="text-bold text-dark">Payment List</h5>
+                <h5 class="text-bold text-dark">Voucher List</h5>
                 <h6 class="m-0 font-weight-bold text-info"><a class="m-0 font-weight-bold text-info" style="text-decoration: none;" href="/payments/create">Add Payment</a></h6>
             </div>
                 <div class="card-body">
