@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', 'Incoming Letters List')
+@section('title', 'Leave List')
 
 @section('content')
 <!DOCTYPE html>
@@ -161,8 +161,9 @@
                                     <th>Leave Type</th>
                                     <th width="10%">Start Date</th>
                                     <th width="10%">End Date</th>
-                                    <th width="8%">Days</th>
-                                    <th width="12%">Status</th>
+                                    <th width="12%">Days Applied For</th>
+                                    <th width="12%">Days Granted</th>
+                                    <th width="9%">Status</th>
                                     <th width="10%">Applied On</th>
                                     <th width="10%">Actions</th>
                                 </tr>
@@ -173,12 +174,13 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $leave->full_name ?? 'N/A' }}</td>
                                         <td>{{ $leave->leave_type }}</td>
-                                        <td data-order="{{ $leave->start_date }}">
-                                            {{ \Carbon\Carbon::parse($leave->start_date)->format('d M, Y') }}
+                                        <td data-order="{{ $leave->date_commencement }}">
+                                            {{ \Carbon\Carbon::parse($leave->date_commencement)->format('d M, Y') }}
                                         </td>
-                                        <td data-order="{{ $leave->end_date }}">
-                                            {{ \Carbon\Carbon::parse($leave->end_date)->format('d M, Y') }}
+                                        <td data-order="{{ $leave->date_resumption }}">
+                                            {{ \Carbon\Carbon::parse($leave->date_resumption)->format('d M, Y') }}
                                         </td>
+                                        <td>{{ $leave->days_applied_for}}</td>
                                         <td>{{ $leave->days_applied_for}}</td>
                                         <td data-order="{{ $leave->status }}">
                                             @php

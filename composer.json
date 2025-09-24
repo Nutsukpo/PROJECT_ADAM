@@ -10,6 +10,7 @@
         "egulias/email-validator": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
+        "laravel/prompts": "^0.1.25",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "phpoffice/phpword": "^1.4",

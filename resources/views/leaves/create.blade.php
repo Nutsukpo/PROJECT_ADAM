@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','Edit Memo')
+@section('title','Applying Leave')
 
 @section('content')
 
@@ -439,6 +439,18 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="daysApplied" class="form-label">Days Granted</label>
+                                <input type="number" id="daysGranted" name="days_granted" class="form-control form-control-lg bg-light" min="0" disabled>
+                                <div class="calculation-hint">This field is based on the coordinators discretion</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dateResumption" class="form-label required">Date of Resumption</label>
+                                <input type="date" id="dateResumption" name="date_resumption" class="form-control form-control-lg" required disabled>
+                            </div>
+                        </div>
+                        
                         
                         <div class="row g-4 mt-3">
                             <!-- Admin -->
