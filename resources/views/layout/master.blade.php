@@ -316,6 +316,21 @@
         </li>
         @endcan
 
+        <!-- Human Resource Management -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHRM" aria-expanded="true">
+                <i class="fas fa-user-cog"></i>
+                <span class="text-light font-weight-bold">HRM</span>
+            </a>
+            <div id="collapseHRM" class="collapse" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/employees">Staff Files</a>
+                    <a class="collapse-item" href="/users/create">Add HRM</a>
+                    <a class="collapse-item" href="/users/roles">MMDA Files</a>
+                </div>
+            </div>
+        </li>
+
         @can('viewSettings')
         <!-- System Settings -->
         <li class="nav-item">

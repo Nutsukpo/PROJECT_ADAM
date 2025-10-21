@@ -23,6 +23,7 @@ class Leave extends Model
         'date_last_leave',
         'days_entitled',
         'days_applied_for',
+        'days_granted',
         'days_already_utilized',
         'date_commencement',
         'date_resumption',

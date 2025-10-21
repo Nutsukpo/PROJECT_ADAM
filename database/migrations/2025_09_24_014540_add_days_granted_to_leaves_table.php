@@ -9,20 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('leaves', function (Blueprint $table) {
-            //
-        });
-    }
+    public function up()
+{
+    Schema::table('leaves', function (Blueprint $table) {
+        $table->integer('days_granted')->nullable()->after('days_applied_for');
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('leaves', function (Blueprint $table) {
-            //
-        });
-    }
+public function down()
+{
+    Schema::table('leaves', function (Blueprint $table) {
+        $table->dropColumn('days_granted');
+    });
+}
+
 };

@@ -181,7 +181,7 @@
                                             {{ \Carbon\Carbon::parse($leave->date_resumption)->format('d M, Y') }}
                                         </td>
                                         <td>{{ $leave->days_applied_for}}</td>
-                                        <td>{{ $leave->days_applied_for}}</td>
+                                        <td>{{ $leave->days_granted}}</td>
                                         <td data-order="{{ $leave->status }}">
                                             @php
                                                 $statusClass = 'status-badge-' . $leave->status;

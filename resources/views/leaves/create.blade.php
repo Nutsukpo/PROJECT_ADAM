@@ -442,7 +442,7 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <label for="daysApplied" class="form-label">Days Granted</label>
-                                <input type="number" id="daysGranted" name="days_granted" class="form-control form-control-lg bg-light" min="0" disabled>
+                                <input type="number" id="daysGranted" name="days_granted" class="form-control form-control-lg bg-light" min="0" >
                                 <div class="calculation-hint">This field is based on the coordinators discretion</div>
                             </div>
                             <div class="col-md-6">
